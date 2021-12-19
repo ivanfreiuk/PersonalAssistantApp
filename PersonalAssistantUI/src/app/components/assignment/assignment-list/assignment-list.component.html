@@ -1,0 +1,10 @@
+<div class="bootstrap-wrapper">
+    <app-spinner-overlay overlay="true" *ngIf="loadingData">
+    </app-spinner-overlay>
+    <div class="container">
+        <div class="assignment-block" *ngFor="let assignment of dataSource.data">
+            <app-assignment-item [assignment]="assignment"></app-assignment-item>
+        </div>
+        <mat-paginator [pageSizeOptions]="[12, 20, 32]" itemsPerPageLabel="Кількість завдань на сторінці" *ngIf="dataSource.data"></mat-paginator>
+    </div>
+  </div>

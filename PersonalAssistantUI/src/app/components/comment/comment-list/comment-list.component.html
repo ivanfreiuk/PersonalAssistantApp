@@ -1,0 +1,59 @@
+<div *ngFor="let comment of comments">
+    <mat-card class="comment-section"> 
+        <mat-card-header>
+            <img mat-card-avatar src="assets/images/default-user-photo.png"
+                alt="User avatar">
+            <mat-card-title>{{comment?.user?.firstName}} {{comment?.user?.lastName}}</mat-card-title>
+            <mat-card-subtitle>{{comment?.user?.email}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <div class="clearfix">
+                <div class="float-left">
+                  <h3>{{comment?.headline}}</h3>
+                </div>
+                <div class="float-right">
+                    <star-rating value="5" totalstars="5" checkedcolor="red" uncheckedcolor="black" size="24px" readonly="false" ></star-rating>      
+                </div>
+              </div>
+              <div class="clearfix">
+                <div class="float-left">
+                  <span>Дата : {{comment?.creationDate | date:'dd.MM.yyyy HH:mm'}}</span>
+                </div>
+                <div *ngIf="userCanDelete(comment.userId)" class="float-right">
+                  <button (click)="delete(comment.id)"mat-flat-button>
+                    <mat-icon>close</mat-icon>
+                  </button>
+                </div>
+              </div>
+              <p><span [innerHTML]="comment?.content"></span></p>
+        </mat-card-content>
+    </mat-card>
+</div>   
+<!-- <div class="bootstrap-wrapper">
+    <div class="container">
+      <div *ngFor="let comment of comments">
+        <mat-divider></mat-divider>
+        <div class="clearfix">
+          <div class="float-left">
+            <h3>{{comment?.headline}}</h3>
+          </div>
+          <div class="float-right">
+            <star-rating [value]="comment?.mark" checkedcolor="#f70" uncheckedcolor="#ddd" size="30px" readonly="true"></star-rating>
+  
+          </div>
+        </div>
+        <div class="clearfix">
+          <div class="float-left">
+            <span>{{comment?.userName}}</span> <br>
+            <span>Date : {{comment?.publicationDate | date:'dd.MM.yyyy HH:mm'}}</span>
+          </div>
+          <div *ngIf="userCanDelete(comment.userId)" class="float-right">
+            <button (click)="delete(comment.id)"mat-stroked-button matTooltip="Delete comment" color="primary">
+              <mat-icon>close</mat-icon>
+            </button>
+          </div>
+        </div>
+        <p>{{comment?.content}}</p>
+      </div>
+    </div>
+  </div> -->

@@ -1,0 +1,11 @@
+mat-form-field {
+    width: 100%;
+}
+mat-form-field textarea {
+    height: 80px;
+}
+
+.btn-submit {
+    height: 50px;
+    width: 150px;
+}

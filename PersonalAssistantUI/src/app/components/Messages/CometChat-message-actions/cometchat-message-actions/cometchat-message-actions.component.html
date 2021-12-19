@@ -1,0 +1,28 @@
+<div>
+  <ul
+    class="messageActionStyle"
+    *ngIf="showToolTip"
+    [ngClass]="{
+      messageActionStyleSecondaryStyle: !receivedMessage
+    }"
+  >
+    <div [class.tool]="!receivedMessage" class="toolTip">
+      <li class="actionGroupStyle" *ngIf="showEditButton" >
+      <!-- TODO - add type in message && messageDetails?.type === MESSAGE_TYPE_TEXT -->
+        <button
+          type="button"
+          class="groupButtonStyle editIcon"
+          (click)="editMessage()"
+        ></button>
+      </li>
+      <li class="actionGroupStyle" >
+        <button
+          type="button"
+          class="groupButtonStyle deleteIcon"
+          (click)="deleteMessage()"
+        ></button>
+      </li>
+    </div>
+  </ul>
+</div>
+

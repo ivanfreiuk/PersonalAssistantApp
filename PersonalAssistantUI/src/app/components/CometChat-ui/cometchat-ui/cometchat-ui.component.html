@@ -1,0 +1,36 @@
+<div class="unifiedStyle">
+  <div class="unifiedSidebarStyle" [@FadeInFadeOut]="checkAnimatedState">
+    <cometchat-nav-bar [room]="room" [loggedInUser]="loggedInUser" [roomToUpdate]="roomToUpdate" [roomToLeave]="roomToLeave"
+      [roomToDelete]="roomToDelete" [lastMessage]="lastMessage" (onUserClick)="userClicked($event)"
+      (onRoomClick)="roomClicked($event)" (onConversationClick)="conversationClicked($event)"
+      (actionGenerated)="actionHandler($event)"></cometchat-nav-bar>
+  </div>
+  <div class="unifiedMainStyle" *ngIf="room !== null" [ngClass]="{
+        unifiedMainSecondaryStyle: viewDetailScreen
+      }">
+    <!-- TODO roomMessage -->
+    <cometchat-messages [room]="room" [composedThreadMessage]="composedThreadMessage"
+      (actionGenerated)="actionHandler($event)" (messageActionGenerated)="messageActionHandler($event)">
+    </cometchat-messages>
+  </div>
+  <!--Detail Screen-->
+  <div class="unifiedSecondaryStyle" *ngIf="viewDetailScreen">
+    <div *ngIf="room?.conversationType === USER" [ngClass]="{
+          detailScreenStyle: viewDetailScreen
+        }">
+      <cometchat-user-details *ngIf="viewDetailScreen" [room]="room" (actionGenerated)="actionHandler($event)">
+      </cometchat-user-details>
+    </div>
+
+    <div *ngIf="room?.conversationType === GROUP">
+      <cometchat-room-details *ngIf="viewDetailScreen" [room]="room" (actionGenerated)="actionEventHandler($event)">
+      </cometchat-room-details>
+    </div>
+  </div>
+  <!-- <cometchat-image-viewer
+      *ngIf="fullScreenViewImage"
+      [messageDetails]="imageView"
+      [open]="true"
+      (actionGenerated)="actionHandler($event)"
+    ></cometchat-image-viewer> -->
+</div>

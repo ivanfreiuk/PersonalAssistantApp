@@ -1,0 +1,35 @@
+<div class="groupWrapperStyle">
+    <div class="groupHeaderStyle">
+  
+      <h4 class="groupHeaderTitleStyle">{{ GROUPS }}</h4>
+      <div class="groupAddStyle" (click)="toggleCreateRoomView()"></div>
+    </div>
+    <div class="groupSearchStyle">
+      <input
+        class="groupSearchInputStyle"
+        type="text"
+        autoComplete="off"
+        [placeholder]="SEARCH"
+        (keyup)="searchRoom($event)"
+      />
+    </div>
+    <div class="groupMsgStyle">
+      <p class="groupMsgTxtStyle">{{ decoratorMessage }}</p>
+    </div>
+    <div class="groupListStyle" (scroll)="handleScroll($event)">
+      <div *ngFor="let room of roomList">
+        <cometchat-room-list-item
+          [room]="room"
+          [selectedRoom]="this.selectedRoom"
+          (onRoomClick)="roomClicked($event)"
+        ></cometchat-room-list-item>
+      </div>
+    </div>
+    <!-- create room component -->
+    <cometchat-create-room
+      *ngIf="openCreateRoomView"
+      (actionGenerated)="actionHandler($event)"
+    ></cometchat-create-room>
+    <!-- create room component -->
+  </div>
+  

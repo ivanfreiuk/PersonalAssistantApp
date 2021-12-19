@@ -1,0 +1,33 @@
+<mat-nav-list>
+  <mat-divider></mat-divider>
+  <a mat-list-item  (click)="openProfile()">
+    <mat-icon mat-list-icon color="primary">person</mat-icon>
+    <span mat-line>Профіль</span>
+  </a>
+  <mat-divider></mat-divider>
+  <a mat-list-item routerLink="/chat">
+    <mat-icon mat-list-icon color="primary">chat</mat-icon>
+    <span mat-line>Чат</span>
+  </a>
+  <mat-divider></mat-divider>
+  <a mat-list-item routerLink="/new-assignment">
+    <mat-icon mat-list-icon color="primary">add_task</mat-icon>
+    <span mat-line>Додати завдання</span>
+  </a>
+  <mat-divider></mat-divider>
+  <a mat-list-item routerLink="/my-assignments">
+    <mat-icon mat-list-icon color="primary">view_list</mat-icon>
+    <span mat-line>Мої завдання</span>
+  </a>
+  <mat-divider></mat-divider>
+  <a mat-list-item routerLink="/all-assignments">
+    <mat-icon mat-list-icon color="primary">search</mat-icon>
+    <span mat-line>Доступні завдання</span>
+  </a>
+  <mat-divider></mat-divider>
+  <a mat-list-item routerLink="/settings">
+    <mat-icon mat-list-icon color="primary">settings</mat-icon>
+    <span mat-line>Налаштування</span>
+  </a>
+  <mat-divider></mat-divider>
+</mat-nav-list>

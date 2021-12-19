@@ -1,0 +1,40 @@
+<div class="chatHeaderStyle">
+    <div class="chatDetailStyle">
+      <!-- SideBar menu icon when screen size goes to mobile -->
+      <div class="chatSideBarBtnStyle" (click)="closeChatWindow()"></div>
+      <div class="chatThumbnailStyle">
+        <!-- Pass The emitted User to The AVATAR below -->
+        <cometchat-avatar
+          [name]="room.name"
+          [avatar]="room.icon"
+          [enableUserStatus]="room.conversationType === USER"
+          [userStatus]="getRoomStatus(room)"
+        ></cometchat-avatar>
+      </div>
+      <div class="chatUserStyle">
+        <!-- Add Tool Tip functions here -->
+        <h6 class="chatNameStyle">{{ room.name }}</h6>
+        <div class="chatStatusStyle typing" *ngIf="isTyping">{{ status }}</div>
+        <!-- Add Mouse Event to status -->
+
+        <!-- TODO add user property *ngIf="getRoomStatus(room) === ONLINE" -->
+        <div *ngIf="room.conversationType === USER">
+          <span class="chatStatusStyle">{{ getRoomStatus(room) }}</span>
+        </div>
+  
+        <!-- <div *ngIf="room?.status === OFFLINE">
+          <span class="chatStatusStyle lastActive">{{
+            getLastActiveDate(item.lastActiveAt)
+          }}</span>
+        </div> -->
+  
+        <div *ngIf="room.conversationType === GROUP && !isTyping">
+          <span class="chatStatusStyle groupMemberCountStatusStyle">{{ status }}</span>
+        </div>
+      </div>
+    </div> 
+    <div class="chatOptionWrapStyle">
+      <div class="chatOptionStyle detailsOption" (click)="openUserDetail()"></div>
+    </div>   
+  </div>
+  

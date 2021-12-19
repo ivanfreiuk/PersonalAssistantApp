@@ -1,0 +1,15 @@
+.card {
+    min-width: 200px;
+    max-width: 50%;
+    margin: 2% auto;
+  }
+
+mat-form-field {
+    width: 100%;
+}
+
+img {
+    height: 250px;
+    max-width: 100%;
+    margin: 1% auto;
+} 

@@ -1,0 +1,79 @@
+<div class="bootstrap-wrapper">
+    <mat-tab-group backgroundColor="primary" mat-stretch-tabs class="mat-elevation-z10">
+        <mat-tab label="Опис завдання">
+            <mat-card>
+                <mat-card-header>
+                    <img mat-card-avatar src="assets/images/default-user-photo.png" alt="User avatar">
+                    <mat-card-title>{{assignment.creator.firstName}} {{assignment.creator.lastName}}</mat-card-title>
+                    <mat-card-subtitle>{{assignment.creator.email}}</mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content>
+                    <mat-divider [inset]="true"></mat-divider>
+                    <h2><strong>Тема : {{assignment.topicName}}</strong></h2>
+                    <!-- <mat-divider [inset]="true"></mat-divider> -->
+                    <p> <strong>Дисципліна</strong> : {{ assignment.discipline?.name }} -
+                        {{assignment.assignmentType?.name}}</p>
+                    <p> <strong>Опис</strong> : <span [innerHTML]="assignment.details"></span></p>
+                    <mat-divider [inset]="true"></mat-divider>
+
+                    <!-- Assignment files -->
+                    <mat-accordion>
+                        <mat-expansion-panel hideToggle>
+                            <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                    <strong>Детальніше . . .</strong>
+                                </mat-panel-title>
+                                <mat-icon color="primary">description</mat-icon>
+                            </mat-expansion-panel-header>
+                            <app-file></app-file>
+                        </mat-expansion-panel>
+                    </mat-accordion>
+                </mat-card-content>
+            </mat-card>
+        </mat-tab>
+        <mat-tab label="Деталі">
+            <mat-card>
+                <mat-card-header>
+                    <img mat-card-avatar src="assets/images/default-user-photo.png" alt="User avatar">
+                    <mat-card-title>{{assignment.creator.firstName}} {{assignment.creator.lastName}}</mat-card-title>
+                    <mat-card-subtitle>{{assignment.creator.email}}</mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content>
+                    <mat-list>
+                        <mat-divider [inset]="true"></mat-divider>
+                        <mat-list-item>
+                            <mat-icon mat-list-icon color="primary">info</mat-icon>
+                            <p mat-line> <strong>Статус</strong> : Нове завдання</p>
+                            <mat-divider [inset]="true"></mat-divider>
+                        </mat-list-item>
+                        <mat-list-item>
+                            <mat-icon mat-list-icon color="primary">event</mat-icon>
+                            <p mat-line> <strong>Дата створення</strong> : {{assignment.preferredDeadline | date:
+                                'dd-MM-yyyy'}} </p>
+                            <mat-divider [inset]="true"></mat-divider>
+                        </mat-list-item>
+                        <mat-list-item>
+                            <mat-icon mat-list-icon color="primary">schedule</mat-icon>
+                            <p mat-line> <strong>Бажаний термін завершення</strong> : {{assignment.preferredDeadline |
+                                date: 'dd-MM-yyyy'}} </p>
+                            <mat-divider [inset]="true"></mat-divider>
+                        </mat-list-item>
+                    </mat-list>
+                </mat-card-content>
+            </mat-card>
+        </mat-tab>
+        <mat-tab label="Комертарі">
+
+            <ng-template matTabContent>
+                <app-new-comment [assignmentId]="assignment.id" (onCommentAdded)="onCommentsChanged()">
+                </app-new-comment>
+                
+                <div class="container comments-section">
+                    <app-comment-list [comments]="assignmentComments" (onCommentDeleted)="onCommentsChanged()">
+                    </app-comment-list>
+                </div>
+            </ng-template>
+            
+        </mat-tab>
+    </mat-tab-group>
+</div>

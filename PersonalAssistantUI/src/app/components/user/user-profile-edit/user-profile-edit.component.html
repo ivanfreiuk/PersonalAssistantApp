@@ -1,0 +1,74 @@
+<div class="bootstrap-wrapper">
+    <div class="container">
+        <mat-card class="card" *ngIf="currentUser">
+            <mat-card-header>
+                <mat-card-title>Редагувати</mat-card-title>
+            </mat-card-header>
+            <mat-divider></mat-divider>
+            <mat-card-content>
+                <form [formGroup]="userDetailsForm">
+                    <img [src]="avatarURL" *ngIf="avatarURL">
+
+                    <mat-form-field appearance="outline">
+                        <mat-label>Ім'я</mat-label>
+                        <input matInput placeholder="Ім'я*" formControlName="firstName">
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline">
+                        <mat-label>Прізвице</mat-label>
+                        <input matInput placeholder="Прізвице*" formControlName="lastName">
+                    </mat-form-field>
+<!-- 
+                    <mat-form-field appearance="outline">
+                        <mat-select formControlName="sex">
+                            <mat-option>-- стать --</mat-option>
+                            <mat-option value="Чоловік">Чоловік</mat-option>
+                            <mat-option value="Жінка">Жінка</mat-option>
+                        </mat-select>
+                        <mat-label>Стать</mat-label>
+                    </mat-form-field> -->
+
+                    <mat-form-field appearance="outline">
+                        <mat-label>Електронна адреса</mat-label>
+                        <input matInput placeholder="Електронна адреса*" formControlName="email">
+                        <mat-icon matSuffix>alternate_email</mat-icon>
+                        <mat-error *ngIf="controls.email.hasError('email') && !controls.email.hasError('required')">
+                            Електронна адреса введена некоректно.
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline">
+                        <mat-label>Населений пункт</mat-label>
+                        <input matInput placeholder="Населений пункт*" formControlName="location">
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline">
+                        <mat-label>Дата народження</mat-label>
+                        <input matInput [matDatepicker]="picker" formControlName="birthDate">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline">
+                        <mat-select formControlName="educationalInstitutionType">
+                            <mat-option>-- тип навчального закладу --</mat-option>
+                            <mat-option value="ВНЗ">ВНЗ</mat-option>
+                            <mat-option value="Коледж">Коледж</mat-option>
+                            <mat-option value="Школа">Школа</mat-option>
+                        </mat-select>
+                        <mat-label>Тип навчального закладу</mat-label>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline">
+                        <mat-label>Назва навчального закладу</mat-label>
+                        <input matInput placeholder="Назва навчального закладу*"
+                            formControlName="educationalInstitutionName">
+                    </mat-form-field>
+                </form>
+            </mat-card-content>
+            <mat-card-actions align="end">
+                <button mat-flat-button color="accent" (click)="onSave()">Зберегти</button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</div>

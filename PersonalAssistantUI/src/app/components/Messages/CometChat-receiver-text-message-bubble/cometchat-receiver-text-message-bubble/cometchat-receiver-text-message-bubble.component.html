@@ -1,0 +1,36 @@
+<div class="messageContainerStyle">
+  <!--ToolTip Component-->
+  <cometchat-message-actions class="tool" [ngClass]="{
+      toolGroup: room.conversationType == GROUP
+    }" [messageDetails]="messageDetails" (messageActionGenerated)="messageActionHandler($event)" *ngIf="showToolTip">
+  </cometchat-message-actions>
+
+  <div class="messageWrapperStyle">
+    <!--avatar component-->
+    <div class="messageThumbnailStyle" *ngIf="room.conversationType == GROUP">
+      <cometchat-avatar [name]="messageDetails?.sender?.userName" [avatar]="messageDetails?.sender?.avatar"
+        [enableUserStatus]="false"></cometchat-avatar>
+    </div>
+    <div class="messageDetailStyle">
+      <!--name--->
+      <div class="nameWrapperStyle" *ngIf="room.conversationType == GROUP">
+        <span class="nameStyle"> {{ messageDetails?.sender?.name }} </span>
+      </div>
+
+      <div class="messageTxtContainerStyle">
+        <!--messageTxt-->
+
+        <div class="messageWrapperStyle" id="check">
+          <div class="messageTxtWrapperStyle">
+            <p class="messageTxtStyle">
+              {{ messageDetails.text }}
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="messageInfoWrapperStyle">
+        <cometchat-read-receipt [messageDetails]="messageDetails" [displayReadReciept]="false"></cometchat-read-receipt>
+      </div>
+    </div>
+  </div>
+</div>

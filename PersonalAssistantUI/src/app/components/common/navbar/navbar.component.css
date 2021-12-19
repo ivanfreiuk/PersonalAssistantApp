@@ -1,0 +1,13 @@
+.float-right {
+    float: right;
+}
+
+.wrapper {
+    width: 100%;
+}
+.navigation {
+    margin-right: 5%;
+}
+mat-menu {
+    width: 150px;
+}

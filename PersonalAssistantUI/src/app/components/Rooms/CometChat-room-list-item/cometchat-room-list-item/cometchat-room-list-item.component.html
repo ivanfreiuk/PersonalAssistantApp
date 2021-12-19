@@ -1,0 +1,29 @@
+<div
+  class="listItem"
+  [ngClass]="{
+    selectedGroupStyle: room?.id === selectedRoom?.id
+  }" (click)="roomClicked(room)">
+  <div class="itemThumbnailStyle">
+    <cometchat-avatar 
+    [name]="room.name"
+    [avatar]="room.icon"
+    [enableUserStatus]="false"
+    ></cometchat-avatar>
+  </div>
+  <div class="itemDetailStyle">
+    <div class="itemNameWrapperStyle">
+      <span class="listItemName">{{ room.name }}</span>
+      <div [ngSwitch]="room?.roomType">
+        <div *ngSwitchCase="'Private'">
+          <span class="shieldIcon"></span>
+        </div>
+        <div *ngSwitchCase="'Protected'">
+          <span class="lockIcon"></span>
+        </div>
+      </div>
+    </div>
+    <div class="itemDescStyle">
+      {{ MEMBERS_COUNT }} {{ room?.membersCount }} 
+    </div>
+  </div>
+</div>

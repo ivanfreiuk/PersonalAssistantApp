@@ -1,0 +1,26 @@
+<div class="chatWrapperStyle">
+  <!-- Add the Action To header to make it Dynamic -->
+  <cometchat-message-header
+    [room]="room"
+    (actionGenerated)="actionEventHandler($event)"
+  ></cometchat-message-header>
+  <div
+    class="messageWindowStyle"
+    (scroll)="handleScroll($event)"
+    #messageWindow
+  >
+    <cometchat-message-list
+      [room]="room"
+      [messages]="messageList"
+      [reachedTopOfConversation]="reachedTopOfConversation"
+      (actionGenerated)="actionHandler($event)"
+      (messageActionGenerated)="messageActionHandler($event)"
+    ></cometchat-message-list>
+  </div>
+  <cometchat-message-composer
+    [room]="room"
+    [messageToBeEdited]="messageToBeEdited"
+    (actionGenerated)="actionHandler($event)"
+    (messageActionGenerated)="messageActionHandler($event)"
+  ></cometchat-message-composer>
+</div>

@@ -1,0 +1,40 @@
+<div class="bootstrap-wrapper">
+      <mat-card>
+        <!-- <mat-card-header>
+            <img mat-card-avatar src="https://material.angular.io/assets/img/examples/shiba2.jpg"
+                alt="User avatar">
+            <mat-card-title>{{authService.currentUserValue.firstName}} {{authService.currentUserValue.lastName}}</mat-card-title>
+            <mat-card-subtitle>{{authService.currentUserValue.email}}</mat-card-subtitle>
+        </mat-card-header> -->
+          <mat-card-content>
+            <form [formGroup]="commentForm">
+                <mat-card-header>
+                    <mat-card-title>Коментар до завдання</mat-card-title>
+                </mat-card-header>
+                <mat-divider></mat-divider>   
+
+                  <mat-form-field appearance="outline">
+                    <mat-label>Заголовок</mat-label>
+                    <input matInput placeholder="Заголовок *" formControlName="headline">
+                  </mat-form-field>
+
+                  <!-- <mat-form-field appearance="outline">
+                    <mat-label>Контент</mat-label>
+                    <textarea matInput placeholder="Коментар... *" formControlName="content"></textarea>
+                  </mat-form-field>  -->
+                    <editor apiKey="wn6007iuriqy8tm2vooh0xzopbgz23wbngoo60qacqbxwwlx" formControlName="content" [init]="{
+                      plugins: [
+                      'lists link image paste help wordcount'
+                      ],
+                      toolbar: 'undo redo | formatselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | help',
+                      language: 'uk'
+                  }"></editor>
+                  
+            </form>
+          </mat-card-content>
+        
+        <mat-card-actions align="end">
+            <button mat-flat-button color="primary" (click)="commentSubmit()" class="btn-submit"><mat-icon>rate_review</mat-icon> Зберегти</button>
+        </mat-card-actions>
+      </mat-card>
+  </div>

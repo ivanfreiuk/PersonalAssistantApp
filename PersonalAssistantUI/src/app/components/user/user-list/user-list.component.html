@@ -1,0 +1,27 @@
+<div class="bootstrap-wrapper">
+    <div class="container" *ngIf="usersSource">  
+        <mat-card class="user-card-item" *ngFor="let user of usersSource">
+            <mat-card-header>
+                <img mat-card-avatar src="assets/images/default-user-photo.png" alt="User avatar">
+                <mat-card-title>{{user.firstName}} {{user.lastName}}</mat-card-title>
+                <mat-card-subtitle>{{user.email}}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-divider></mat-divider>
+            <mat-card-content>
+                <mat-list>                    
+                    <mat-list-item>
+                        <mat-icon mat-list-icon color="primary">place</mat-icon>
+                        <p mat-line> <strong>Місто</strong> : {{user.location}}</p>
+                        <mat-divider [inset]="true"></mat-divider>
+                    </mat-list-item>
+                    <mat-list-item>
+                        <mat-icon mat-list-icon color="primary">menu_book</mat-icon>
+                        <p mat-line> <strong>Освіта</strong> : {{user.educationalInstitutionType}} {{user.educationalInstitutionName}}</p>
+                        <mat-divider [inset]="true"></mat-divider>
+                    </mat-list-item>
+                </mat-list>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>
+

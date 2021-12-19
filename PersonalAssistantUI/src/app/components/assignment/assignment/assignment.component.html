@@ -1,0 +1,66 @@
+<div class="bootstrap-wrapper">
+    <div class="container">
+        <mat-card class="card">
+            <mat-card-header>
+                <mat-card-title>Додати завдання</mat-card-title>
+            </mat-card-header>
+            <mat-divider></mat-divider>
+            <mat-card-content>
+                <form [formGroup]="assignmentForm">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Тема</mat-label>
+                        <input matInput placeholder="Тема*" formControlName="topicName">
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline">
+                        <mat-select formControlName="discipline">
+                            <mat-option>-- дисципліна --</mat-option>
+                            <mat-option *ngFor="let discipline of disciplineSource" [value]="discipline.id">
+                                {{discipline.name}}
+                            </mat-option>
+                        </mat-select>
+                        <mat-label>Дисципліна</mat-label>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline">
+                        <mat-select formControlName="assignmentType">
+                            <mat-option>-- тип завдання --</mat-option>
+                            <mat-option *ngFor="let assignmentType of assignmentTypeSource" [value]="assignmentType.id">
+                                {{assignmentType.name}}
+                            </mat-option>
+                        </mat-select>
+                        <mat-label>Тип завдання</mat-label>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline">
+                        <mat-label>Бажаний термін</mat-label>
+                        <input matInput [matDatepicker]="picker" formControlName="preferredDeadline">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                    <!-- <mat-form-field appearance="outline">
+                        <mat-label>Опис вимог</mat-label>
+                        <textarea matInput formControlName="details"></textarea>
+                    </mat-form-field> -->
+
+                    <editor apiKey="wn6007iuriqy8tm2vooh0xzopbgz23wbngoo60qacqbxwwlx" formControlName="details" [init]="{
+                            plugins: [
+                            'lists link image paste help wordcount'
+                            ],
+                            toolbar: 'undo redo | formatselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | help',
+                            language: 'uk'
+                        }"></editor>
+                    <!-- <button mat-stroked-button color="primary" (click)="onFileUpload()">
+                    Прикріпити файли <mat-icon>file_upload</mat-icon>
+                  </button>
+                <input type="file" multiple id="fileUpload" name="fileUpload" style="display:none;" /> -->
+
+                    <app-file></app-file>
+                </form>
+            </mat-card-content>
+            <mat-card-actions align="end">
+                <button mat-flat-button color="accent" (click)="onSubmit()">Додати</button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</div>

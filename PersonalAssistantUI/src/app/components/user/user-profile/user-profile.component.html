@@ -1,0 +1,45 @@
+<div class="bootstrap-wrapper">
+    <div class="container user-details">
+        <div class="row">
+            <div class="col-md-4">
+                <mat-card class="text-center">
+                    <img  [src]="avatarURL" class="img-fluid" *ngIf="avatarURL">
+                </mat-card>
+            </div>
+            <div class="col-md-8">
+                <mat-card>
+                    <mat-card-header>
+                        <mat-card-title>{{user.firstName}} {{user.lastName}}</mat-card-title>
+                        <mat-card-subtitle>{{user.email}}</mat-card-subtitle>
+                    </mat-card-header>
+                    <mat-divider></mat-divider>
+                    <mat-card-content>
+                        <mat-list>
+                            <mat-list-item>
+                                <mat-icon mat-list-icon color="primary">face</mat-icon>
+                                <p mat-line> <strong>Стать</strong> : {{user.sex}}</p>
+                                <mat-divider [inset]="true"></mat-divider>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <mat-icon mat-list-icon color="primary">event</mat-icon>
+                                <p mat-line> <strong>Дата народження</strong> :  {{user.birthDate | date: 'dd-MM-yyyy'}}</p>
+                                <mat-divider [inset]="true"></mat-divider>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <mat-icon mat-list-icon color="primary">place</mat-icon>
+                                <p mat-line> <strong>Місто</strong> : {{user.location}}</p>
+                                <mat-divider [inset]="true"></mat-divider>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <mat-icon mat-list-icon color="primary">menu_book</mat-icon>
+                                <p mat-line> <strong>Освіта</strong> : {{user.educationalInstitutionType}} {{user.educationalInstitutionName}}</p>
+                                <mat-divider [inset]="true"></mat-divider>
+                            </mat-list-item>
+                        </mat-list>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+
+</div>
